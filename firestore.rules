@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Ranking y estadísticas: lectura pública (la landing los muestra),
+    // escritura solo desde el backend/Admin SDK (no desde el navegador).
+    match /leaderboard/{doc} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /stats/{doc} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Resto de colecciones: bloqueadas por defecto.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

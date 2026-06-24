@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Astrogalaxy Premium — Pago de prueba</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'DM Sans',system-ui,sans-serif;color:#13241B;background:linear-gradient(165deg,#0A0A23,#10103A 45%,#1E1B4B);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;}
+  a{text-decoration:none;}
+  .card{background:#fff;border-radius:24px;max-width:430px;width:100%;padding:32px;box-shadow:0 30px 80px -20px rgba(0,0,0,0.5);}
+  .badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:0.04em;color:#3B2606;background:linear-gradient(90deg,#FBBF24,#F59E0B);padding:6px 13px;border-radius:100px;}
+  h1{font-family:'Bricolage Grotesque',sans-serif;font-size:25px;font-weight:700;letter-spacing:-0.02em;margin:16px 0 0;}
+  label{display:block;font-size:13px;font-weight:600;color:#3A523F;margin-top:16px;}
+  input{width:100%;border:1px solid #CBDAC4;border-radius:12px;padding:13px 15px;font-size:15px;font-family:'DM Sans',sans-serif;color:#13241B;margin-top:7px;}
+  input:focus{outline:none;border-color:#7C3AED;box-shadow:0 0 0 3px rgba(124,58,237,0.15);}
+  .row{display:flex;gap:12px;}
+  .pay{width:100%;margin-top:22px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;color:#fff;background:linear-gradient(135deg,#7C3AED,#6366F1);padding:15px;border-radius:13px;transition:transform .15s;}
+  .pay:hover{transform:translateY(-1px);}
+  .demo-note{font-size:12px;color:#7A8C7E;text-align:center;margin-top:14px;line-height:1.5;}
+  .ok{display:none;text-align:center;}
+  .ok.show{display:block;}
+  .ok-ico{width:72px;height:72px;border-radius:50%;background:#ECFDF5;display:flex;align-items:center;justify-content:center;margin:0 auto;}
+  .back{display:inline-block;margin-top:22px;font-size:14px;font-weight:600;color:#0D6B4F;}
+  .seed{background:#ECFDF5;border:1px solid #BBF7D0;border-radius:13px;padding:13px 15px;margin-top:18px;font-size:13.5px;color:#15803D;line-height:1.5;}
+</style>
+</head>
+<body>
+  <div class="card">
+    <!-- Formulario -->
+    <div id="form">
+      <span class="badge">★ ASTROGALAXY PREMIUM</span>
+      <h1>Suscripción Premium</h1>
+      <p style="font-size:14.5px;color:#4A6151;line-height:1.55;margin:8px 0 0;">
+        <strong>$4,99 / mes</strong> · Retos premium, NFTs únicas, multiplicador ×2 de puntos y
+        <strong>semillas de regalo</strong> para tu huerto en casa.
+      </p>
+
+      <div class="seed">🌱 Incluye un kit de semillas de varias plantas (albahaca, tomate, girasol y más) enviado a tu escuela.</div>
+
+      <label for="email">Correo electrónico</label>
+      <input id="email" type="email" placeholder="tucorreo@ejemplo.com" autocomplete="email">
+
+      <label for="card">Número de tarjeta</label>
+      <input id="card" type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" maxlength="19">
+
+      <div class="row">
+        <div style="flex:1;">
+          <label for="exp">Vencimiento</label>
+          <input id="exp" type="text" placeholder="MM/AA" maxlength="5">
+        </div>
+        <div style="flex:1;">
+          <label for="cvc">CVC</label>
+          <input id="cvc" type="text" inputmode="numeric" placeholder="123" maxlength="4">
+        </div>
+      </div>
+
+      <button class="pay" id="payBtn" type="button">Pagar $4,99 (prueba)</button>
+      <p class="demo-note">🔒 Pago de <strong>prueba</strong> — no se realiza ningún cobro real.<br>Usa la tarjeta de prueba 4242 4242 4242 4242.</p>
+    </div>
+
+    <!-- Confirmación -->
+    <div class="ok" id="ok">
+      <div class="ok-ico">
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h1 style="margin-top:16px;">¡Bienvenido a Premium! 🎉</h1>
+      <p style="font-size:14.5px;color:#4A6151;line-height:1.55;margin:10px 0 0;">
+        Tu suscripción de prueba está activa. Ya tienes acceso a los retos premium, NFTs únicas y
+        el multiplicador ×2 de puntos.
+      </p>
+      <div class="seed">🌱 Tus <strong>semillas de regalo</strong> se enviarán a tu escuela. ¡A sembrar tu huerto!</div>
+      <a class="back" href="index.html">← Volver a Astrogalaxy</a>
+    </div>
+  </div>
+
+  <script>
+    // Formateo simple de la tarjeta
+    var card = document.getElementById('card');
+    card.addEventListener('input', function () {
+      var v = card.value.replace(/\D/g, '').slice(0, 16);
+      card.value = v.replace(/(.{4})/g, '$1 ').trim();
+    });
+    var exp = document.getElementById('exp');
+    exp.addEventListener('input', function () {
+      var v = exp.value.replace(/\D/g, '').slice(0, 4);
+      exp.value = v.length > 2 ? v.slice(0, 2) + '/' + v.slice(2) : v;
+    });
+
+    document.getElementById('payBtn').addEventListener('click', function () {
+      var email = document.getElementById('email').value.trim();
+      if (!email) { document.getElementById('email').focus(); return; }
+      // Marca Premium activo (de prueba) para la app
+      try { localStorage.setItem('ag_premium', JSON.stringify({ active: true, email: email, since: Date.now() })); } catch (e) {}
+      document.getElementById('form').style.display = 'none';
+      document.getElementById('ok').classList.add('show');
+    });
+  </script>
+</body>
+</html>

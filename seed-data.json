@@ -1,0 +1,17 @@
+{
+  "stats": {
+    "global": {
+      "escuelas": 320,
+      "estudiantes": 48000,
+      "nfts": 18500,
+      "co2": 86
+    }
+  },
+  "leaderboard": [
+    { "id": "6a-liceo-andes",      "grade": "6°A", "school": "Liceo Andes",          "retos": 12, "nfts": 36, "points": 4820 },
+    { "id": "5b-san-martin",       "grade": "5°B", "school": "Colegio San Martín",   "retos": 11, "nfts": 31, "points": 4510 },
+    { "id": "4c-del-valle",        "grade": "4°C", "school": "Escuela del Valle",     "retos": 10, "nfts": 28, "points": 3990 },
+    { "id": "6b-liceo-andes",      "grade": "6°B", "school": "Liceo Andes",          "retos": 9,  "nfts": 24, "points": 3640 },
+    { "id": "5a-san-martin",       "grade": "5°A", "school": "Colegio San Martín",   "retos": 9,  "nfts": 22, "points": 3480 }
+  ]
+}
